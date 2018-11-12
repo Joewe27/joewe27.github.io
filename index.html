@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
+
+<style>
+table {
+    font-family: Helvetica;
+    border-collapse: collapse;
+    background-color: #89cff0;
+    color: black;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: white;
+}
+
+h1{
+  background-color: #89cff0;
+  color: black;
+  text-align: center;
+}
+p{
+  font-family: Helvetica;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1 style="font-family: Helvetica">UCR SimpleSchedule</h1>
+
+<p>Class name:</p> <input type="text" id="className"><br>
+<p>Instructor:</p> <input type="text" id="instructor"><br>
+<p>Location:</p> <input type="text" id="location"><br>
+
+<p>What days does this class meet?</p>
+Monday: <input type="checkbox" id="boxMonday"><br>
+Tuesday: <input type="checkbox" id="boxTuesday"><br>
+Wednesday: <input type="checkbox" id="boxWednesday"><br>
+Thursday: <input type="checkbox" id="boxThursday"><br>
+Friday: <input type="checkbox" id="boxFriday">
+
+<p>What time does this class meet?</p>
+Start time: <input type="time" id="startTime"><br>
+End time: <input type="time" id="endTime"><br>
+
+<br>
+<button onclick="getValues()">Add row</button>
+<button onclick="deleteRow()">Delete Row</button>
+<button onclick="clearTable()">Clear Table</button>
+<button id="cmd">Generate PDF</button>
+
+<p id="output"></p>
+
+<div id="content">
+<table id="table">
+  <tr>
+    <th>Class</th>
+    <th>Instructor</th>
+    <th>Location</th>
+    <th>Days</th>
+    <th>Time</th>
+  </tr>
+</table><br><br><br><br>
+</div>
+
+<div id="editor"></div>
+
+<script>
+
+function getValues() {
+  var table = document.getElementById("table");
+  var className = document.getElementById("className").value;
+  var instructor = document.getElementById("instructor").value;
+  var location = document.getElementById("location").value;
+
+  var monday = document.getElementById("boxMonday").checked;
+  var tuesday = document.getElementById("boxTuesday").checked;
+  var wednesday = document.getElementById("boxWednesday").checked;
+  var thursday = document.getElementById("boxThursday").checked;
+  var friday = document.getElementById("boxFriday").checked;
+
+  var row = table.insertRow(-1);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+  var cell5 = row.insertCell(4);
+  cell1.innerHTML = className;
+  cell2.innerHTML = instructor;
+  cell3.innerHTML = location;
+
+  if (monday) {
+    cell4.innerHTML += "Monday, ";
+  }
+  if (tuesday) {
+    cell4.innerHTML += "Tuesday, ";
+  }
+  if (wednesday) {
+    cell4.innerHTML += "Wednesday, ";
+  }
+  if (thursday) {
+    cell4.innerHTML += "Thursday, ";
+  }
+  if (friday) {
+    cell4.innerHTML += "Friday, ";
+  }
+  if (monday || tuesday || wednesday || thursday || friday) {
+    cell4.innerHTML = cell4.innerHTML.substring(0, cell4.innerHTML.length - 2);
+  }
+
+  var startTime = document.getElementById("startTime").value;
+  var endTime = document.getElementById("endTime").value;
+
+  var startTimeHours = startTime.substring(0, 2);
+  var restOfStartTime = startTime.substring(2, 5);
+  var startMeridiem = " am";
+  if (startTimeHours > 12) {
+    startMeridiem = " pm";
+  }
+  startTimeHours = ((parseInt(startTimeHours) + 11) % 12 + 1);
+
+  var endTimeHours = endTime.substring(0, 2);
+  var restOfEndTime = endTime.substring(2, 5);
+  var endMeridiem = " am";
+  if (endTimeHours > 12) {
+    endMeridiem = " pm";
+  }
+  endTimeHours = ((parseInt(endTimeHours) + 11) % 12 + 1);
+
+  cell5.innerHTML = startTimeHours + restOfStartTime + startMeridiem + " - " + endTimeHours + restOfEndTime + endMeridiem;
+  //cell4.innerHTML = startTime + " - " + endTime;
+
+  document.getElementById("className").value = "";
+  document.getElementById("instructor").value = "";
+  document.getElementById("location").value = "";
+
+  document.getElementById("boxMonday").checked = false;
+  document.getElementById("boxTuesday").checked = false;
+  document.getElementById("boxWednesday").checked = false;
+  document.getElementById("boxThursday").checked = false;
+  document.getElementById("boxFriday").checked = false;
+
+  document.getElementById("startTime").value = "";
+  document.getElementById("endTime").value = "";
+}
+
+function deleteRow() {
+  var table = document.getElementById("table");
+  var rowCount = table.rows.length;
+
+  if (rowCount > 1) {
+    table.deleteRow(rowCount - 1);
+  }
+}
+
+function clearTable() {
+  location.reload();
+}
+
+var doc = new jsPDF();
+var specialElementHandlers = {
+    '#editor': function (element, renderer) {
+        return true;
+    }
+};
+
+$('#cmd').click(function () {
+    doc.fromHTML($('#content').html(), 10, 10, {
+        'width': 170,
+            'elementHandlers': specialElementHandlers
+    });
+    doc.save('class-schedule.pdf');
+});
+
+</script>
+
+</body>
+</html>
