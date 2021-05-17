@@ -1,0 +1,40 @@
+body {
+  background-color: #0d0d0d;
+  margin-top: 2%;
+  margin-left: 20%;
+  margin-right: 20%;
+  line-height: 130%;
+  padding-left: 70px;
+  padding-right: 70px;
+  padding-bottom: 100px;
+}
+
+p {
+  color: #EDEDED;
+  font-family: Helvetica, sans-serif;
+  font-size: 20;
+}
+
+#name {
+  color: #EDEDED;
+  font-size: 50px;
+  font-weight: 500;
+  line-height: 100%;
+}
+
+#menu a {
+  display: inline-block;
+  font-size: 160%;
+  font-family: 'Courier-New', monospace;
+  text-decoration: none;
+  border: 4px;
+  border-style: solid;
+  border-color: 59a1ff;
+  padding: 5px;
+  color: #59a1ff;
+  background-color: #0d0d0d;
+}
+
+#projects, #resume {
+  margin-left: 5px;
+}
