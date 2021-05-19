@@ -52,3 +52,7 @@ p {
 #projects, #resume {
   margin-left: 7px;
 }
+
+#resume-pdf {
+  margin-top: 15px;
+}
