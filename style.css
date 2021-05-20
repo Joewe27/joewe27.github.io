@@ -49,12 +49,8 @@ p {
   color: white;
 }
 
-.menu-current-page {
-  color: white;
-}
-
 #projects, #resume {
-  margin-left: 7px;
+  margin-left: 4px;
 }
 
 /* projects */

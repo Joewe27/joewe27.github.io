@@ -4,12 +4,7 @@ let menu_resume = '<a id="resume" href="resume.html">resume</a>'
 
 let menu = menu_index + menu_projects + menu_resume
 
-document.getElementById("menu").innerHTML = menu
-
-// make color of current page link white
-if (url.split('/').pop() == "projects.html") {
-  console.log("success")
-}
+// document.getElementById("menu").innerHTML = menu
 
 // underscore animation in header
 underscore = document.getElementById("underscore")
