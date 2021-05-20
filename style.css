@@ -14,10 +14,10 @@ body {
   padding-bottom: 100px;
   /* width: 800px; */
   width: 50%;
+  color: #EDEDED;
 }
 
 p {
-  color: #EDEDED;
   font-family: "Roboto";
   font-size: 20;
 }
@@ -53,6 +53,10 @@ p {
   margin-left: 7px;
 }
 
-#resume-pdf {
-  margin-top: 15px;
+/* resume */
+
+#resume-download a {
+  font-size: 160%;
+  text-decoration: none;
+  color: #59a1ff;
 }
