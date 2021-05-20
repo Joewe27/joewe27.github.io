@@ -6,6 +6,11 @@ let menu = menu_index + menu_projects + menu_resume
 
 document.getElementById("menu").innerHTML = menu
 
+// make color of current page link white
+if (url.split('/').pop() == "projects.html") {
+  console.log("success")
+}
+
 // underscore animation in header
 underscore = document.getElementById("underscore")
 
