@@ -53,6 +53,12 @@ p {
   margin-left: 4px;
 }
 
+.link a {
+  text-decoration: none;
+  color: #59a1ff;
+  target="_blank"
+}
+
 /* projects */
 
 .column {
@@ -75,11 +81,6 @@ p {
   content: "";
   display: table;
   clear: both;
-}
-
-.project-link a {
-  text-decoration: none;
-  color: #59a1ff;
 }
 
 /* resume */
