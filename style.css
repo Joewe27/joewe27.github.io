@@ -4,7 +4,7 @@ body {
   background-color: #0d0d0d;
 }
 
-#content {
+.content {
   margin-top: 2%;
   margin-left: auto;
   margin-right: auto;
@@ -22,7 +22,7 @@ p {
   font-size: 20;
 }
 
-#name {
+.name {
   color: #EDEDED;
   font-family: 'Roboto';
   font-size: 50px;
@@ -31,7 +31,7 @@ p {
   margin-bottom: 20px;
 }
 
-#menu a {
+.menu a {
   display: inline-block;
   font-size: 160%;
   font-family: 'Roboto';
@@ -45,18 +45,36 @@ p {
   margin-bottom: 10px;
 }
 
-#menu a:hover {
+.menu a:hover {
   color: #EDEDED;
 }
 
-#projects, #resume {
+.projects, .resume {
   margin-left: 4px;
+}
+
+.footer {
+  margin-top: 80px;
+  text-align: center;
+}
+
+/* .qr:before {
+  background-image: url('images/nano-qr.png');
+  background-size: 80px 80px;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  content:"";
+}
+.qr:hover:before {
+  background-image: none;
+  content: 'Tips are much appreciated! <3';
 }
 
 .link a {
   text-decoration: none;
   color: #59a1ff;
-}
+} */
 
 /* projects */
 
@@ -84,7 +102,7 @@ p {
 
 /* resume */
 
-#resume-download a {
+.resume-download a {
   font-size: 160%;
   text-decoration: none;
   color: #59a1ff;
