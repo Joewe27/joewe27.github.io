@@ -58,24 +58,6 @@ p {
   text-align: center;
 }
 
-/* .qr:before {
-  background-image: url('images/nano-qr.png');
-  background-size: 80px 80px;
-  display: inline-block;
-  width: 80px;
-  height: 80px;
-  content:"";
-}
-.qr:hover:before {
-  background-image: none;
-  content: 'Tips are much appreciated! <3';
-}
-
-.link a {
-  text-decoration: none;
-  color: #59a1ff;
-} */
-
 /* projects */
 
 .column {
