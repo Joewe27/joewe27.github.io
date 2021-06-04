@@ -82,6 +82,11 @@ p {
   clear: both;
 }
 
+.link a {
+  text-decoration: none;
+  color: #59a1ff;
+}
+
 /* resume */
 
 .resume-download a {
